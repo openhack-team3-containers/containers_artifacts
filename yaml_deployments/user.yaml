@@ -21,13 +21,15 @@ spec:
         - name: "SQL_USER"
           value: "sqladminjXv4980"
         - name: "SQL_PASSWORD"
-          value: "Passw0rd!"
+          valueFrom:
+            secretKeyRef:
+              key: sqlpass
+              name: sqlpass
         - name: "SQL_SERVER"
-          value: "sqlserverjxv4980.database.windows.net"
-        - name: "SQL_DBNAME"
-          value: "mydrivingDB"
-        - name: "ASPNETCORE_ENVIRONMENT"
-          value: "Development"
+          valueFrom:
+            secretKeyRef:
+              key: sqlserver
+              name: sqlserver
         resources:
           requests:
             cpu: 100m

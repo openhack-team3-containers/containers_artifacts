@@ -17,6 +17,13 @@ spec:
       containers:
       - name: tripinsightsweb
         image: registryjxv4980.azurecr.io/tripinsights/tripviewer:1.0
+        env:
+        - name: "USERPROFILE_API_ENDPOINT"
+          value: "http://userprofile:80"
+        - name: "TRIPS_API_ENDPOINT"
+          value: "http://triapi:80"
+        - name: "BING_MAPS_KEY"
+          value: ""
         resources:
           requests:
             cpu: 100m
