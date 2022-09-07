@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tripinsightsweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tripinsightsweb
+  template:
+    metadata:
+      labels:
+        app: tripinsightsweb
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: tripinsightsweb
+        image: registryjxv4980.azurecr.io/tripinsights/tripviewer:1.0
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 8080
+          name: poi

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userapi
+  template:
+    metadata:
+      labels:
+        app: userapi
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: userapi
+        image: registryjxv4980.azurecr.io/tripinsights/userapi:1.0
+        env:
+        - name: "SQL_USER"
+          value: "sqladminjXv4980"
+        - name: "SQL_PASSWORD"
+          value: "Passw0rd!"
+        - name: "SQL_SERVER"
+          value: "sqlserverjxv4980.database.windows.net"
+        - name: "SQL_DBNAME"
+          value: "mydrivingDB"
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "Development"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 8080
+          name: poi
