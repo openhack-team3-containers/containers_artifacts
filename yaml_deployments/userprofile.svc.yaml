@@ -12,3 +12,4 @@ spec:
     app: userprofile
 status:
   loadBalancer: {}
+  
