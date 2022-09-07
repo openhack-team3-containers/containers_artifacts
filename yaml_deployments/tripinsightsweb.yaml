@@ -21,7 +21,7 @@ spec:
         - name: "USERPROFILE_API_ENDPOINT"
           value: "http://userprofile:80"
         - name: "TRIPS_API_ENDPOINT"
-          value: "http://triapi:80"
+          value: "http://tripapi:80"
         - name: "BING_MAPS_KEY"
           value: ""
         resources:
