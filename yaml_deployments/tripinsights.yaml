@@ -42,3 +42,17 @@ spec:
             readOnly: true
             volumeAttributes:
               secretProviderClass: "azure-kvname-system-msi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: poiapi
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: poiapi
+status:
+  loadBalancer: {}
