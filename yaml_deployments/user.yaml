@@ -47,6 +47,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: userapi
+  namespace: api
 spec:
   ports:
   - port: 80
