@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tripapi
+  namespace: api
 spec:
   replicas: 1
   selector:
@@ -17,19 +18,13 @@ spec:
       containers:
       - name: tripapi
         image: registryjxv4980.azurecr.io/tripinsights/tripapi:1.0
+        volumeMounts:
+          - name: secrets-store01-inline
+            mountPath: "/mnt/secrets-store"
+            readOnly: true
         env:
         - name: "SQL_USER"
           value: "sqladminjXv4980"
-        - name: "SQL_PASSWORD"
-          valueFrom:
-            secretKeyRef:
-              key: sqlpass
-              name: sqlpass
-        - name: "SQL_SERVER"
-          valueFrom:
-            secretKeyRef:
-              key: sqlserver
-              name: sqlserver
         resources:
           requests:
             cpu: 100m
@@ -40,6 +35,13 @@ spec:
         ports:
         - containerPort: 80
           name: trips
+      volumes:
+        - name: secrets-store01-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "azure-kvname-system-msi"
 ---
 apiVersion: v1
 kind: Service
