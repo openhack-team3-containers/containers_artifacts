@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: tripinsights-ingress
+  name: tripinsights-ingress-api
   namespace: api
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -44,7 +44,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: tripinsights-ingress
+  name: tripinsights-ingress-web
   namespace: web
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
