@@ -15,35 +15,35 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: api/tripinsights
+            name: tripinsights
             port:
               number: 80
       - path: /api/trips
         pathType: Prefix
         backend:
           service:
-            name: api/tripapi
+            name: tripapi
             port:
               number: 80
       - path: /api/user
         pathType: Prefix
         backend:
           service:
-            name: api/userapi
+            name: userapi
             port:
               number: 80
       - path: /api/user-java
         pathType: Prefix
         backend:
           service:
-            name: api/userprofile
+            name: userprofile
             port:
               number: 80
       - path: /(.*)
         pathType: Prefix
         backend:
           service:
-            name: web/tripviewer
+            name: tripviewer
             port:
               number: 80
 ---
