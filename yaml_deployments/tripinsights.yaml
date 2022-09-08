@@ -54,6 +54,6 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    app: poiapi
+    app: trippoi
 status:
   loadBalancer: {}
