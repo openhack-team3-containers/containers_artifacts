@@ -20,7 +20,7 @@ spec:
         image: registryjxv4980.azurecr.io/tripinsights/userapi:1.0
         volumeMounts:
           - name: secrets-store01-inline
-            mountPath: "/mnt/secrets-store"
+            mountPath: "/secrets"
             readOnly: true
         env:
         - name: "SQL_USER"
